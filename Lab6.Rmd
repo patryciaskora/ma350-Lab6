@@ -1,0 +1,15 @@
+---
+title: "R Notebook"
+output: html_notebook
+author: Patricia Skora, Peter Cilibero 
+---
+
+# Lab 6
+## Part 1
+### Problem 1
+
+```{r}
+
+```
+
+
