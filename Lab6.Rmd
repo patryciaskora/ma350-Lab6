@@ -9,7 +9,35 @@ author: Patricia Skora, Peter Cilibero
 ### Problem 1
 
 ```{r}
-
+#' A function that that computes the culmulative distribution function for the 
+#' Gaussian random variable with mean and variance using the R function integrate().
+#'
+#' @param x The vector of values to calculate the culmulative distribution on each 
+#'          value.
+#' @param mean The mean to use in the computation with a default value of 0.
+#' @param var The variance to use in the computation with a defualt value of 1.
+#'
+#' @return A vector results which is the computed CDF for each value in the passed in 
+#'         vector.
+pgauss <- function(x, mean = 0, var = 1){
+  results <- vector(length = length(x))
+  for(n in x){
+    val <- integrate(f = function(n) dnorm(n, mean = mean, sd = sqrt(var)), lower = -Inf, upper = n)
+    results[n] <- val$value
+  }
+  return(sum(results))
+}
 ```
 
+### Problem 2
+```{r}
+pgauss(x = c(2,3,4,5,6), mean = 1, var = 2)
+sum(pnorm(c(2,3,4,5,6), mean = 1, sd = sqrt(2)))
+```
+
+## Part 2
+### Problem 3
+```{r}
+
+```
 

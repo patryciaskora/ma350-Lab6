@@ -1759,6 +1759,55 @@ summary {
 <h3>Problem 1</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIycgQSBmdW5jdGlvbiB0aGF0IHRoYXQgY29tcHV0ZXMgdGhlIGN1bG11bGF0aXZlIGRpc3RyaWJ1dGlvbiBmdW5jdGlvbiBmb3IgdGhlIFxuIycgR2F1c3NpYW4gcmFuZG9tIHZhcmlhYmxlIHdpdGggbWVhbiBhbmQgdmFyaWFuY2UgdXNpbmcgdGhlIFIgZnVuY3Rpb24gaW50ZWdyYXRlKCkuXG4jJ1xuIycgQHBhcmFtIHggVGhlIHZlY3RvciBvZiB2YWx1ZXMgdG8gY2FsY3VsYXRlIHRoZSBjdWxtdWxhdGl2ZSBkaXN0cmlidXRpb24gb24gZWFjaCBcbiMnICAgICAgICAgIHZhbHVlLlxuIycgQHBhcmFtIG1lYW4gVGhlIG1lYW4gdG8gdXNlIGluIHRoZSBjb21wdXRhdGlvbiB3aXRoIGEgZGVmYXVsdCB2YWx1ZSBvZiAwLlxuIycgQHBhcmFtIHZhciBUaGUgdmFyaWFuY2UgdG8gdXNlIGluIHRoZSBjb21wdXRhdGlvbiB3aXRoIGEgZGVmdWFsdCB2YWx1ZSBvZiAxLlxuIydcbiMnIEByZXR1cm4gQSB2ZWN0b3IgcmVzdWx0cyB3aGljaCBpcyB0aGUgY29tcHV0ZWQgQ0RGIGZvciBlYWNoIHZhbHVlIGluIHRoZSBwYXNzZWQgaW4gXG4jJyAgICAgICAgIHZlY3Rvci5cbnBnYXVzcyA8LSBmdW5jdGlvbih4LCBtZWFuID0gMCwgdmFyID0gMSl7XG4gIHJlc3VsdHMgPC0gdmVjdG9yKGxlbmd0aCA9IGxlbmd0aCh4KSlcbiAgZm9yKG4gaW4geCl7XG4gICAgdmFsIDwtIGludGVncmF0ZShmID0gZnVuY3Rpb24obikgZG5vcm0obiwgbWVhbiA9IG1lYW4sIHNkID0gc3FydCh2YXIpKSwgbG93ZXIgPSAtSW5mLCB1cHBlciA9IG4pXG4gICAgcmVzdWx0c1tuXSA8LSB2YWwkdmFsdWVcbiAgfVxuICByZXR1cm4oc3VtKHJlc3VsdHMpKVxufVxuYGBgIn0= -->
+<pre class="r"><code>#' A function that that computes the culmulative distribution function for the 
+#' Gaussian random variable with mean and variance using the R function integrate().
+#'
+#' @param x The vector of values to calculate the culmulative distribution on each 
+#'          value.
+#' @param mean The mean to use in the computation with a default value of 0.
+#' @param var The variance to use in the computation with a defualt value of 1.
+#'
+#' @return A vector results which is the computed CDF for each value in the passed in 
+#'         vector.
+pgauss &lt;- function(x, mean = 0, var = 1){
+  results &lt;- vector(length = length(x))
+  for(n in x){
+    val &lt;- integrate(f = function(n) dnorm(n, mean = mean, sd = sqrt(var)), lower = -Inf, upper = n)
+    results[n] &lt;- val$value
+  }
+  return(sum(results))
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="problem-2" class="section level3">
+<h3>Problem 2</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGdhdXNzKHggPSBjKDIsMyw0LDUsNiksIG1lYW4gPSAxLCB2YXIgPSAyKVxuYGBgIn0= -->
+<pre class="r"><code>pgauss(x = c(2,3,4,5,6), mean = 1, var = 2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQuNjYyMTExXG4ifQ== -->
+<pre><code>[1] 4.662111</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKHBub3JtKGMoMiwzLDQsNSw2KSwgbWVhbiA9IDEsIHNkID0gc3FydCgyKSkpXG5gYGAifQ== -->
+<pre class="r"><code>sum(pnorm(c(2,3,4,5,6), mean = 1, sd = sqrt(2)))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQuNjYyMTExXG4ifQ== -->
+<pre><code>[1] 4.662111</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="part-2" class="section level2">
+<h2>Part 2</h2>
+<div id="problem-3" class="section level3">
+<h3>Problem 3</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -1766,7 +1815,7 @@ summary {
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCmF1dGhvcjogUGF0cmljaWEgU2tvcmEsIFBldGVyIENpbGliZXJvIAotLS0KCiMgTGFiIDYKIyMgUGFydCAxCiMjIyBQcm9ibGVtIDEKCmBgYHtyfQoKYGBgCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCmF1dGhvcjogUGF0cmljaWEgU2tvcmEsIFBldGVyIENpbGliZXJvIAotLS0KCiMgTGFiIDYKIyMgUGFydCAxCiMjIyBQcm9ibGVtIDEKCmBgYHtyfQojJyBBIGZ1bmN0aW9uIHRoYXQgdGhhdCBjb21wdXRlcyB0aGUgY3VsbXVsYXRpdmUgZGlzdHJpYnV0aW9uIGZ1bmN0aW9uIGZvciB0aGUgCiMnIEdhdXNzaWFuIHJhbmRvbSB2YXJpYWJsZSB3aXRoIG1lYW4gYW5kIHZhcmlhbmNlIHVzaW5nIHRoZSBSIGZ1bmN0aW9uIGludGVncmF0ZSgpLgojJwojJyBAcGFyYW0geCBUaGUgdmVjdG9yIG9mIHZhbHVlcyB0byBjYWxjdWxhdGUgdGhlIGN1bG11bGF0aXZlIGRpc3RyaWJ1dGlvbiBvbiBlYWNoIAojJyAgICAgICAgICB2YWx1ZS4KIycgQHBhcmFtIG1lYW4gVGhlIG1lYW4gdG8gdXNlIGluIHRoZSBjb21wdXRhdGlvbiB3aXRoIGEgZGVmYXVsdCB2YWx1ZSBvZiAwLgojJyBAcGFyYW0gdmFyIFRoZSB2YXJpYW5jZSB0byB1c2UgaW4gdGhlIGNvbXB1dGF0aW9uIHdpdGggYSBkZWZ1YWx0IHZhbHVlIG9mIDEuCiMnCiMnIEByZXR1cm4gQSB2ZWN0b3IgcmVzdWx0cyB3aGljaCBpcyB0aGUgY29tcHV0ZWQgQ0RGIGZvciBlYWNoIHZhbHVlIGluIHRoZSBwYXNzZWQgaW4gCiMnICAgICAgICAgdmVjdG9yLgpwZ2F1c3MgPC0gZnVuY3Rpb24oeCwgbWVhbiA9IDAsIHZhciA9IDEpewogIHJlc3VsdHMgPC0gdmVjdG9yKGxlbmd0aCA9IGxlbmd0aCh4KSkKICBmb3IobiBpbiB4KXsKICAgIHZhbCA8LSBpbnRlZ3JhdGUoZiA9IGZ1bmN0aW9uKG4pIGRub3JtKG4sIG1lYW4gPSBtZWFuLCBzZCA9IHNxcnQodmFyKSksIGxvd2VyID0gLUluZiwgdXBwZXIgPSBuKQogICAgcmVzdWx0c1tuXSA8LSB2YWwkdmFsdWUKICB9CiAgcmV0dXJuKHN1bShyZXN1bHRzKSkKfQpgYGAKCiMjIyBQcm9ibGVtIDIKYGBge3J9CnBnYXVzcyh4ID0gYygyLDMsNCw1LDYpLCBtZWFuID0gMSwgdmFyID0gMikKc3VtKHBub3JtKGMoMiwzLDQsNSw2KSwgbWVhbiA9IDEsIHNkID0gc3FydCgyKSkpCmBgYAoKIyMgUGFydCAyCiMjIyBQcm9ibGVtIDMKYGBge3J9CgpgYGAKCg==</div>
 
 
 
