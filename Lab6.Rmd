@@ -38,6 +38,28 @@ sum(pnorm(c(2,3,4,5,6), mean = 1, sd = sqrt(2)))
 ## Part 2
 ### Problem 3
 ```{r}
+x <- sample(10000, size = 5000, replace = TRUE)
+curve(dnorm(x, mean = 5, sd = 10))
+abline(h = 0, lty = 2)
+```
+
+### Problem 4
+```{r}
+
+```
+
+### Problem 5
+
+## Part 3
+### Problem 6
+```{r}
+guassian.ll <- function(mean, var, data){
+  
+}
+```
+
+### Problem 7
+```{r}
 
 ```
 
